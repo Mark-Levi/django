@@ -16,12 +16,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from mysite.views import index, categories
+from mysite.views import pageNotFound
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", index),
-    path("cats/", categories),
+    path("", include("mysite.urls")),
 ]
+
+handler404 = pageNotFound
